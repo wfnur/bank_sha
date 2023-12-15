@@ -46,7 +46,7 @@ const HomePage({ Key? key }) : super(key: key);
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         backgroundColor: purpleColor,
         child: Image.asset('assets/ic_plus_circle.png',width: 24,),
       ),
@@ -55,7 +55,8 @@ const HomePage({ Key? key }) : super(key: key);
         padding: const EdgeInsets.symmetric(horizontal:24),
         children: [
           buildProfile(),
-          buildWallet()
+          buildWallet(),
+          buildLevel(),
         ],
       ),
     );
@@ -132,6 +133,39 @@ const HomePage({ Key? key }) : super(key: key);
           Text('Rp. 1.0000.0000.0000', style: whiteTextStyle.copyWith(fontSize: 20,fontWeight: semiBold),),
 
 
+        ],
+      ),
+    );
+  }
+
+  Widget buildLevel(){
+    return Container(
+      margin: const EdgeInsets.only(top:20),
+      padding: const EdgeInsets.all(22),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: whiteColor
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text('Level 1 ',style: blackTextStyle.copyWith(fontWeight: medium),),
+              const Spacer(),
+              Text('Rp. 1.000.0000 ',style: blackTextStyle.copyWith(fontWeight: semiBold),),
+              Text('(55%)',style: greenTextStyle.copyWith(fontWeight: semiBold),),
+            ],
+          ),
+          const SizedBox(height: 15,),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(55),
+            child: LinearProgressIndicator(
+              value: 0.5,
+              minHeight: 8,
+              valueColor: AlwaysStoppedAnimation(greenColor),
+              backgroundColor: lightBackgroundColor,
+            ),
+          )
         ],
       ),
     );

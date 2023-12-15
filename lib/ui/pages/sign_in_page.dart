@@ -1,4 +1,6 @@
 import 'package:bank_sha/shared/theme.dart';
+import 'package:bank_sha/ui/widgets/buttons.dart';
+import 'package:bank_sha/ui/widgets/forms.dart';
 import 'package:flutter/material.dart';
 
 class SignInPage extends StatelessWidget {
@@ -44,40 +46,10 @@ const SignInPage({ Key? key }) : super(key: key);
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //EMAIL
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Email Address',style: blackTextStyle.copyWith(fontWeight: medium),),
-                    const SizedBox(height: 8,),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        contentPadding: const EdgeInsets.all(15)
-                      ),
-                    )
-
-                  ],
-                ),
+                const CustomFormTextField(title: 'Email Address'),
                 const SizedBox(height: 16,),
                 //PASSWORD
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Password',style: blackTextStyle.copyWith(fontWeight: medium),),
-                    const SizedBox(height: 8,),
-                    TextFormField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        contentPadding: const EdgeInsets.all(15)
-                      ),
-                    )
-                  ],
-                ),
+                const CustomFormTextField(title: 'Password',obscureText: true,),
                 const SizedBox(height: 16,),
                 Align(
                   alignment: Alignment.centerRight,
@@ -85,19 +57,9 @@ const SignInPage({ Key? key }) : super(key: key);
                 ),
                 const SizedBox(height: 30,),
                 //Button Sign in
-                SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: TextButton(
-                        onPressed: (){},
-                        style: TextButton.styleFrom(
-                          backgroundColor: purpleColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(56)
-                          )
-                        ),
-                        child:Text('Sign In',style: whiteTextStyle,),
-                      ),
+                CustomFilledButton(
+                      title: "Sign In",
+                      onPressed: () {},
                     ),
               ]
             ),
@@ -105,23 +67,10 @@ const SignInPage({ Key? key }) : super(key: key);
           const SizedBox(height: 50,),
 
           //Create new Accout
-          SizedBox(
-              width: double.infinity,
-              height: 24,
-              child: TextButton(
-                onPressed: (){
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const SignInPage())
-                  // );
-                },
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.zero
-                ),
-                child:Text('Create New Account',style: greyTextStyle.copyWith(fontSize: 16),),
-              ),
-            )
+          CustomTextButton(
+            title: "Create New Account",
+            onPressed: () {},
+          )
 
         ],
       ),

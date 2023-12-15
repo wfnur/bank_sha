@@ -1,5 +1,4 @@
 import 'package:bank_sha/shared/theme.dart';
-import 'package:bank_sha/ui/pages/sign_in_page.dart';
 import 'package:bank_sha/ui/widgets/buttons.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -90,20 +89,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     //get started
                     CustomFilledButton(
                       title: "Get Started",
-                      onPressed: () {},
+                      onPressed: () { Navigator.pushNamedAndRemoveUntil(context, '/sign-up', (route) => false);},
                     ),
-                    const SizedBox(height: 20,),
+                    const SizedBox(height: 15,),
                     
                     //sign in
                     CustomTextButton(
-                      title: "Create New Account",
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SignInPage())
-                          );
-                      },
+                      title: "Sign in",
+                      onPressed: () { Navigator.pushNamedAndRemoveUntil(context, '/sign-in', (route) => false);},
                     )
                   ],
                 )
@@ -138,7 +131,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     ),
                     const Spacer(),
                     CustomFilledButton(
-                      title: "Sign In",
+                      title: "Continue",
                       onPressed: () => carouselController.nextPage(),
                       width: 150,
                       height: 50,

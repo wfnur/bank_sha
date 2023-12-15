@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:bank_sha/shared/theme.dart';
-//import 'package:bank_sha/ui/pages/onboarding_page.dart';
-import 'package:bank_sha/ui/pages/sign_in_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -18,10 +16,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
 
     Timer(const Duration(seconds: 2), () { 
-      Navigator.push(context,
-      MaterialPageRoute(
-        //builder: (context) => const OnboardingPage()));
-        builder: (context) => const SignInPage()));
+      Navigator.pushNamedAndRemoveUntil(context, '/onboarding', (route) => false);
     });
   }
 

@@ -1,4 +1,5 @@
 import 'package:bank_sha/shared/theme.dart';
+import 'package:bank_sha/ui/widgets/home_service_item.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -57,6 +58,7 @@ const HomePage({ Key? key }) : super(key: key);
           buildProfile(),
           buildWallet(),
           buildLevel(),
+          buildServices(),
         ],
       ),
     );
@@ -165,6 +167,28 @@ const HomePage({ Key? key }) : super(key: key);
               valueColor: AlwaysStoppedAnimation(greenColor),
               backgroundColor: lightBackgroundColor,
             ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget buildServices(){
+    return Container(
+      margin: const EdgeInsets.only(top:30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Services',style: blackTextStyle.copyWith(fontSize: 16,fontWeight: semiBold),),
+          const SizedBox(height: 14,),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              HomeServiceItem(iconURL: 'assets/ic_topup.png', title: 'Top Up'),
+              HomeServiceItem(iconURL: 'assets/ic_send.png', title: 'Send'),
+              HomeServiceItem(iconURL: 'assets/ic_withdraw.png', title: 'With Draw'),
+              HomeServiceItem(iconURL: 'assets/ic_more.png', title: 'More'),
+            ],
           )
         ],
       ),

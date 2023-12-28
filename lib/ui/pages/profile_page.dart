@@ -58,7 +58,13 @@ const ProfilePage({ Key? key }) : super(key: key);
                 ProfileMenuItem(
                   iconURL: 'assets/ic_edit_profile.png', 
                   title: 'Edit Profile',
-                  onTap: (){Navigator.pushNamed(context, '/pin');},
+                  onTap: () async{
+                    if(await Navigator.pushNamed(context, '/pin') == true){
+                      // ignore: use_build_context_synchronously
+                      Navigator.pushNamed(context, '/profile-edit');
+                    }
+                    //Navigator.pushNamed(context, '/pin');
+                  },
                 ),
                 ProfileMenuItem(iconURL: 'assets/ic_pin.png', title: 'My Pin',onTap: (){},),
                 ProfileMenuItem(iconURL: 'assets/ic_wallet.png', title: 'Wallet Setting',onTap: (){},),

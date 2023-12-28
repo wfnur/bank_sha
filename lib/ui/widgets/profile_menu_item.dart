@@ -17,11 +17,11 @@ const ProfileMenuItem({
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(bottom: 30),
+        margin: const EdgeInsets.only(bottom: 30),
         child: Row(
           children: [
             Image.asset(iconURL,width: 24,),
-            SizedBox(width: 18,),
+            const SizedBox(width: 18,),
             Text(title,style: blackTextStyle.copyWith(fontSize: 14,fontWeight: medium),)
           ],
         ),

@@ -55,7 +55,11 @@ const ProfilePage({ Key? key }) : super(key: key);
                 const SizedBox(height: 40,),
 
                 //list menu
-                ProfileMenuItem(iconURL: 'assets/ic_edit_profile.png', title: 'Edit Profile',onTap: (){},),
+                ProfileMenuItem(
+                  iconURL: 'assets/ic_edit_profile.png', 
+                  title: 'Edit Profile',
+                  onTap: (){Navigator.pushNamed(context, '/pin');},
+                ),
                 ProfileMenuItem(iconURL: 'assets/ic_pin.png', title: 'My Pin',onTap: (){},),
                 ProfileMenuItem(iconURL: 'assets/ic_wallet.png', title: 'Wallet Setting',onTap: (){},),
                 ProfileMenuItem(iconURL: 'assets/ic_reward.png', title: 'My Rewards',onTap: (){},),

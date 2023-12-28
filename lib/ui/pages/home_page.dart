@@ -1,6 +1,7 @@
 import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/widgets/home_latest_transaction_item.dart';
 import 'package:bank_sha/ui/widgets/home_service_item.dart';
+import 'package:bank_sha/ui/widgets/home_tips_item.dart';
 import 'package:bank_sha/ui/widgets/home_user_item.dart';
 import 'package:flutter/material.dart';
 
@@ -284,12 +285,22 @@ const HomePage({ Key? key }) : super(key: key);
 
   Widget buildFriendlyTips(){
     return Container(
-      margin: const EdgeInsets.only(top:30),
+      margin: const EdgeInsets.only(top:30,bottom: 50),
       child:Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Friendly Tips',style: blackTextStyle.copyWith(fontSize: 16,fontWeight: semiBold),),
-          const SizedBox(height: 14,)
+          const SizedBox(height: 14,),
+          const Wrap(
+            spacing: 17,
+            runSpacing: 18,
+            children: [
+              HomeTipsItem(imgURL: 'assets/img_tips1.png', title: 'Title 1', url: 'https://www.google.com'),
+              HomeTipsItem(imgURL: 'assets/img_tips2.png', title: 'Title 2', url: 'https://www.google.com'),
+              HomeTipsItem(imgURL: 'assets/img_tips3.png', title: 'Title 3', url: 'https://www.google.com'),
+              HomeTipsItem(imgURL: 'assets/img_tips4.png', title: 'Title 4', url: 'https://www.google.com'),
+            ],
+          )
         ],
       ),
     );

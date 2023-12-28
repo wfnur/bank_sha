@@ -1,6 +1,7 @@
 import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/widgets/home_latest_transaction_item.dart';
 import 'package:bank_sha/ui/widgets/home_service_item.dart';
+import 'package:bank_sha/ui/widgets/home_user_item.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -61,6 +62,8 @@ const HomePage({ Key? key }) : super(key: key);
           buildLevel(),
           buildServices(),
           buildLatestTransactions(),
+          buildSendAgain(),
+          buildFriendlyTips()
         ],
       ),
     );
@@ -253,4 +256,43 @@ const HomePage({ Key? key }) : super(key: key);
       ),
     );
   }
+
+  Widget buildSendAgain(){
+    return Container(
+      margin: const EdgeInsets.only(top: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Send Again', style: blackTextStyle.copyWith(fontSize: 16,fontWeight: semiBold),),
+          const SizedBox(height: 14,),
+          const SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                HomeUserItem(imgURL: 'assets/img_friend1.png', username: 'yuanniita'),
+                HomeUserItem(imgURL: 'assets/img_friend2.png', username: 'naddd'),
+                HomeUserItem(imgURL: 'assets/img_friend3.png', username: 'puutrii'),
+                HomeUserItem(imgURL: 'assets/img_friend4.png', username: 'marthiaa'),
+                HomeUserItem(imgURL: 'assets/img_friend1.png', username: 'fajjjar'),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget buildFriendlyTips(){
+    return Container(
+      margin: const EdgeInsets.only(top:30),
+      child:Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Friendly Tips',style: blackTextStyle.copyWith(fontSize: 16,fontWeight: semiBold),),
+          const SizedBox(height: 14,)
+        ],
+      ),
+    );
+  }
+
 }

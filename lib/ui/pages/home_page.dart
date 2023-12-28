@@ -11,7 +11,6 @@ const HomePage({ Key? key }) : super(key: key);
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: lightBackgroundColor,
       bottomNavigationBar: BottomAppBar(
         color: whiteColor,
         shape: const CircularNotchedRectangle(),

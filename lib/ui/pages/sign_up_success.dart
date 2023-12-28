@@ -8,7 +8,6 @@ const SignUpSuccess({ Key? key }) : super(key: key);
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: lightBackgroundColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

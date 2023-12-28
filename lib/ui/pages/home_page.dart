@@ -1,4 +1,5 @@
 import 'package:bank_sha/shared/theme.dart';
+import 'package:bank_sha/ui/widgets/home_latest_transaction_item.dart';
 import 'package:bank_sha/ui/widgets/home_service_item.dart';
 import 'package:flutter/material.dart';
 
@@ -59,6 +60,7 @@ const HomePage({ Key? key }) : super(key: key);
           buildWallet(),
           buildLevel(),
           buildServices(),
+          buildLatestTransactions(),
         ],
       ),
     );
@@ -195,4 +197,60 @@ const HomePage({ Key? key }) : super(key: key);
     );
   }
 
+  Widget buildLatestTransactions(){
+    return Container(
+      margin: const EdgeInsets.only(top:30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Latest Transactions',
+            style: blackTextStyle.copyWith(fontSize: 16,fontWeight: semiBold)
+          ),
+          const SizedBox(height: 14,),
+          Container(
+            padding: const EdgeInsets.all(22),
+            margin: const EdgeInsets.only(top:20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: whiteColor
+            ),
+            child:const Column(
+              children: [
+                HomeLatestTransactionItem(
+                  iconURL: 'assets/ic_transaction_cat1.png', 
+                  title: 'Top Up', 
+                  time: 'Yesterday', 
+                  value: '+ 450.000'
+                ),
+                HomeLatestTransactionItem(
+                  iconURL: 'assets/ic_transaction_cat2.png', 
+                  title: 'Cashback', 
+                  time: 'Desember 19', 
+                  value: '+ 550.000'
+                ),
+                HomeLatestTransactionItem(
+                  iconURL: 'assets/ic_transaction_cat3.png', 
+                  title: 'Shopping', 
+                  time: 'Desember 25', 
+                  value: '- 400.000'
+                ),
+                HomeLatestTransactionItem(
+                  iconURL: 'assets/ic_transaction_cat4.png', 
+                  title: 'Top Up', 
+                  time: 'Yesterday', 
+                  value: '+ 450.000'
+                ),
+                HomeLatestTransactionItem(
+                  iconURL: 'assets/ic_transaction_cat5.png', 
+                  title: 'Top Up', 
+                  time: 'Yesterday', 
+                  value: '+ 450.000'
+                ),
+              ],)
+          )
+        ],
+      ),
+    );
+  }
 }

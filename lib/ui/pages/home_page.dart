@@ -291,14 +291,14 @@ const HomePage({ Key? key }) : super(key: key);
         children: [
           Text('Friendly Tips',style: blackTextStyle.copyWith(fontSize: 16,fontWeight: semiBold),),
           const SizedBox(height: 14,),
-          const Wrap(
+          Wrap(
             spacing: 17,
             runSpacing: 18,
             children: [
-              HomeTipsItem(imgURL: 'assets/img_tips1.png', title: 'Title 1', url: 'https://www.google.com'),
-              HomeTipsItem(imgURL: 'assets/img_tips2.png', title: 'Title 2', url: 'https://www.google.com'),
-              HomeTipsItem(imgURL: 'assets/img_tips3.png', title: 'Title 3', url: 'https://www.google.com'),
-              HomeTipsItem(imgURL: 'assets/img_tips4.png', title: 'Title 4', url: 'https://www.google.com'),
+              HomeTipsItem(imgURL: 'assets/img_tips1.png', title: 'Title 1', url: Uri.parse('https://www.google.com')),
+              HomeTipsItem(imgURL: 'assets/img_tips2.png', title: 'Title 2', url: Uri.parse('https://www.youtube.com')),
+              HomeTipsItem(imgURL: 'assets/img_tips3.png', title: 'Title 3', url: Uri.parse('https://www.google.com')),
+              HomeTipsItem(imgURL: 'assets/img_tips4.png', title: 'Title 4', url: Uri.parse('https://www.google.com')),
             ],
           )
         ],

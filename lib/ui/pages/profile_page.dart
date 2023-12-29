@@ -66,7 +66,16 @@ const ProfilePage({ Key? key }) : super(key: key);
                     //Navigator.pushNamed(context, '/pin');
                   },
                 ),
-                ProfileMenuItem(iconURL: 'assets/ic_pin.png', title: 'My Pin',onTap: (){},),
+                ProfileMenuItem(
+                  iconURL: 'assets/ic_pin.png', 
+                  title: 'My Pin',
+                  onTap: () async{
+                    if(await Navigator.pushNamed(context, '/pin') == true){
+                      // ignore: use_build_context_synchronously
+                      Navigator.pushNamed(context, '/profile-edit-pin');
+                    }
+                  },
+                ),
                 ProfileMenuItem(iconURL: 'assets/ic_wallet.png', title: 'Wallet Setting',onTap: (){},),
                 ProfileMenuItem(iconURL: 'assets/ic_reward.png', title: 'My Rewards',onTap: (){},),
                 ProfileMenuItem(iconURL: 'assets/ic_help.png', title: 'Help Center',onTap: (){},),

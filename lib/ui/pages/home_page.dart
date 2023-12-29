@@ -201,7 +201,13 @@ const HomePage({ Key? key }) : super(key: key);
                   Navigator.pushNamed(context, '/topup');
                 },
               ),
-              HomeServiceItem(iconURL: 'assets/ic_send.png', title: 'Send'),
+              HomeServiceItem(
+                iconURL: 'assets/ic_send.png', 
+                title: 'Send',
+                onTap: () {
+                  Navigator.pushNamed(context, '/transfer');
+                },
+              ),
               HomeServiceItem(iconURL: 'assets/ic_withdraw.png', title: 'With Draw'),
               HomeServiceItem(iconURL: 'assets/ic_more.png', title: 'More'),
             ],

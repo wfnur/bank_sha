@@ -40,7 +40,7 @@ const ProfileEditPin({ Key? key }) : super(key: key);
                 CustomFilledButton(
                       title: "Update",
                       onPressed: () {
-                        
+                        Navigator.pushNamedAndRemoveUntil(context, '/profile-edit-success', (route) => false);
                       },
                 ),
               ]

@@ -47,7 +47,7 @@ const TopupPage({ Key? key }) : super(key: key);
           const SizedBox(height: 18,),
           CustomFilledButton(
             title: "Continue",
-            onPressed: () {Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);},
+            onPressed: () {Navigator.pushNamed(context, '/topup-amount');},
           ),
           const SizedBox(height: 40,),
         ],

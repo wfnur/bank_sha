@@ -60,7 +60,7 @@ const HomePage({ Key? key }) : super(key: key);
           buildProfile(context),
           buildWallet(),
           buildLevel(),
-          buildServices(),
+          buildServices(context),
           buildLatestTransactions(),
           buildSendAgain(),
           buildFriendlyTips()
@@ -183,7 +183,7 @@ const HomePage({ Key? key }) : super(key: key);
     );
   }
 
-  Widget buildServices(){
+  Widget buildServices(BuildContext context){
     return Container(
       margin: const EdgeInsets.only(top:30),
       child: Column(
@@ -191,10 +191,16 @@ const HomePage({ Key? key }) : super(key: key);
         children: [
           Text('Services',style: blackTextStyle.copyWith(fontSize: 16,fontWeight: semiBold),),
           const SizedBox(height: 14,),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              HomeServiceItem(iconURL: 'assets/ic_topup.png', title: 'Top Up'),
+              HomeServiceItem(
+                iconURL: 'assets/ic_topup.png', 
+                title: 'Top Up',
+                onTap: () {
+                  Navigator.pushNamed(context, '/topup');
+                },
+              ),
               HomeServiceItem(iconURL: 'assets/ic_send.png', title: 'Send'),
               HomeServiceItem(iconURL: 'assets/ic_withdraw.png', title: 'With Draw'),
               HomeServiceItem(iconURL: 'assets/ic_more.png', title: 'More'),

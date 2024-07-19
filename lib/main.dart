@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       //home: SignupSuccessPage(),
       routes: {
-        '/': (context)=> const SplashPage(), //const SplashPage(),
+        '/': (context)=> const HomePage(), //const SplashPage(),
         '/onboarding': (context) => const OnboardingPage(),
         '/sign-in':(context)=> const SigninPage(),
         '/sign-up':(context)=> const SignupPage(),

@@ -1,4 +1,6 @@
 import 'package:bank_sha/shared/theme.dart';
+import 'package:bank_sha/ui/pages/signin_page.dart';
+import 'package:bank_sha/ui/pages/widgets/buttons.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -87,34 +89,18 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   currentIndex == 2 ?
                   Column(
                     children: [
-                      SizedBox(
-                        width: double.infinity,
-                        height: 50,
-                        child: TextButton(
-                          onPressed: (){
-                            carouselController.nextPage();
-                          }, 
-                          style: TextButton.styleFrom(
-                            backgroundColor: purpleColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(56)
-                            )
-                          ),
-                          child: Text(
-                            'Get',
-                              style: whiteTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: semiBold
-                              ),
-                          ),
-                        ),
+                      CustomFilledButton(
+                        title: 'Get Started',
+                        onPressed: () {},
                       ),
                       const SizedBox(height: 20),
                       SizedBox(
                         width: double.infinity,
                         height: 24,
                         child: TextButton(
-                          onPressed: (){}, 
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>const SigninPage()));
+                          }, 
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
                           ),
@@ -159,28 +145,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         ),
                       ),
                       const Spacer(),
-                      SizedBox(
+
+                      CustomFilledButton(
                         width: 150,
-                        height: 50,
-                        child: TextButton(
-                          onPressed: (){
-                            carouselController.nextPage();
-                          }, 
-                          style: TextButton.styleFrom(
-                            backgroundColor: purpleColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(56)
-                            )
-                          ),
-                          child: Text(
-                            'Continue',
-                              style: whiteTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: semiBold
-                              ),
-                          ),
-                        ),
-                      )
+                        title: 'Continue',
+                        onPressed: () {carouselController.nextPage();},
+                      ),
+                      
                     ],
                   )
                 ],

@@ -1,4 +1,5 @@
 import 'package:bank_sha/shared/theme.dart';
+import 'package:bank_sha/ui/pages/widgets/home_service_item.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -55,7 +56,9 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 24),
         children: [
           buildProfile(),
-          buildWalletCard()
+          buildWalletCard(),
+          buildLevel(),
+          buildService()
         ],
       ),
     );
@@ -128,4 +131,59 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  Widget buildLevel(){
+    return Container(
+      padding: const EdgeInsets.all(22),
+      margin: const EdgeInsets.only(top:20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: whiteColor
+      ),
+      child: Column(
+        children: [
+          Row(
+            children:  [
+              Text('Level : Beginer',style: blackTextStyle.copyWith(fontWeight: semiBold),),
+              const Spacer(),
+              Text('55%',style: greenTextStyle.copyWith(fontWeight: semiBold),),
+              Text(' of Rp. 20.000',style: blackTextStyle),
+            ],
+          ),
+          const SizedBox(height: 10,),
+          ClipRRect(
+              borderRadius: BorderRadius.circular(55),
+              child: const LinearProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(Color.fromARGB(255, 14, 189, 28)),
+                value: 0.8,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget buildService(){
+    return Container(
+      margin: const EdgeInsets.only(top:40),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Services',style: blackTextStyle.copyWith(fontSize:16 ,fontWeight: semiBold),),
+          const SizedBox(height: 14,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              HomeServiceItem(iconUrl: 'assets/ic_topup.png', title: 'Top Up',onTap: () {},),
+              HomeServiceItem(iconUrl: 'assets/ic_send.png', title: 'Send',onTap: () {},),
+              HomeServiceItem(iconUrl: 'assets/ic_withdraw.png', title: 'Withdraw',onTap: () {},),
+              HomeServiceItem(iconUrl: 'assets/ic_more.png', title: 'More',onTap: () {},),
+            ],
+          )
+        ],
+      ),
+    );
+
+  }
+
 }

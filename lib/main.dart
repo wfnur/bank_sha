@@ -1,3 +1,4 @@
+import 'package:bank_sha/ui/pages/onboarding_page.dart';
 import 'package:bank_sha/ui/pages/signin_page.dart';
 import 'package:bank_sha/ui/pages/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +11,14 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) :super(key:key);
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:SigninPage()
-      //home:SplashPage(),
+      routes: {
+        '/': (context)=> const SplashPage(),
+        '/onboarding': (context) => const OnboardingPage(),
+        '/sign-in':(context)=> const SigninPage(),
+      },
     );
   }
 }

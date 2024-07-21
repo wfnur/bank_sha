@@ -1,6 +1,7 @@
 import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/pages/widgets/home_latesttrans.dart';
 import 'package:bank_sha/ui/pages/widgets/home_service_item.dart';
+import 'package:bank_sha/ui/pages/widgets/home_user_item.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -60,7 +61,8 @@ class HomePage extends StatelessWidget {
           buildWalletCard(),
           buildLevel(),
           buildService(),
-          buildLatestTransaction()
+          buildLatestTransaction(),
+          buildSendAgain()
         ],
       ),
     );
@@ -187,7 +189,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-
   Widget buildLatestTransaction(){
     return Container(
       margin: const EdgeInsets.only(top:40),
@@ -195,7 +196,6 @@ class HomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Latest Transaction',style: blackTextStyle.copyWith(fontSize: 16,fontWeight: semiBold)),
-
           Container(
             padding: const EdgeInsets.all(22),
             margin: const EdgeInsets.only(top:14),
@@ -203,7 +203,7 @@ class HomePage extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               color: whiteColor
             ),
-            child: Column(
+            child: const Column(
               children: [
                 HomeLatesttrans(iconUrl: 'assets/ic_transaction_cat1.png', title: 'Topup', time: 'Yesterday', value: '+45.000'),
                 HomeLatesttrans(iconUrl: 'assets/ic_transaction_cat2.png', title: 'Cashback', time: 'Sep 11', value: '+22.000'),
@@ -219,4 +219,28 @@ class HomePage extends StatelessWidget {
     );
   }
 
+
+  Widget buildSendAgain(){
+    return Container(
+      margin: const EdgeInsets.only(top:40),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Send Again',style: blackTextStyle.copyWith(fontSize: 16,fontWeight: semiBold)),
+          const SizedBox(height: 14,),
+          const SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                HomeUserItem(imageUrl: 'assets/img_friend1.png', username: 'yuanita'),
+                HomeUserItem(imageUrl: 'assets/img_friend2.png', username: 'xxsfd'),
+                HomeUserItem(imageUrl: 'assets/img_friend3.png', username: 'zzsdf'),
+                HomeUserItem(imageUrl: 'assets/img_friend4.png', username: 'yuanita'),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/pages/widgets/home_latesttrans.dart';
 import 'package:bank_sha/ui/pages/widgets/home_service_item.dart';
+import 'package:bank_sha/ui/pages/widgets/home_tips_item.dart';
 import 'package:bank_sha/ui/pages/widgets/home_user_item.dart';
 import 'package:flutter/material.dart';
 
@@ -62,7 +63,8 @@ class HomePage extends StatelessWidget {
           buildLevel(),
           buildService(),
           buildLatestTransaction(),
-          buildSendAgain()
+          buildSendAgain(),
+          buildFriendlyTips()
         ],
       ),
     );
@@ -219,7 +221,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-
   Widget buildSendAgain(){
     return Container(
       margin: const EdgeInsets.only(top:40),
@@ -243,4 +244,29 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  Widget buildFriendlyTips(){
+    return Container(
+      margin: const EdgeInsets.only(top:40,bottom: 50),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Friendly Tips',style: blackTextStyle.copyWith(fontSize: 16,fontWeight: semiBold)),
+          const SizedBox(height: 14,),
+          const Wrap(
+            spacing: 17,
+            runSpacing: 18,
+            children: [
+              HomeTipsItem(imageUrl: 'assets/img_tips1.png', title: 'Best for using a credit card', url: 'https://www.google.com/'),
+              HomeTipsItem(imageUrl: 'assets/img_tips2.png', title: 'Best for using a credit card', url: 'https://www.google.com/'),
+              HomeTipsItem(imageUrl: 'assets/img_tips3.png', title: 'Best for using a credit card', url: 'https://www.google.com/'),
+              HomeTipsItem(imageUrl: 'assets/img_tips4.png', title: 'Best for using a credit card', url: 'https://www.google.com/'),
+            ],
+          )
+          
+        ],
+      ),
+    );
+  }
+
 }

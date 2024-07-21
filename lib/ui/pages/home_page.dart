@@ -1,4 +1,5 @@
 import 'package:bank_sha/shared/theme.dart';
+import 'package:bank_sha/ui/pages/widgets/home_latesttrans.dart';
 import 'package:bank_sha/ui/pages/widgets/home_service_item.dart';
 import 'package:flutter/material.dart';
 
@@ -58,7 +59,8 @@ class HomePage extends StatelessWidget {
           buildProfile(),
           buildWalletCard(),
           buildLevel(),
-          buildService()
+          buildService(),
+          buildLatestTransaction()
         ],
       ),
     );
@@ -183,7 +185,38 @@ class HomePage extends StatelessWidget {
         ],
       ),
     );
+  }
 
+
+  Widget buildLatestTransaction(){
+    return Container(
+      margin: const EdgeInsets.only(top:40),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Latest Transaction',style: blackTextStyle.copyWith(fontSize: 16,fontWeight: semiBold)),
+
+          Container(
+            padding: const EdgeInsets.all(22),
+            margin: const EdgeInsets.only(top:14),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: whiteColor
+            ),
+            child: Column(
+              children: [
+                HomeLatesttrans(iconUrl: 'assets/ic_transaction_cat1.png', title: 'Topup', time: 'Yesterday', value: '+45.000'),
+                HomeLatesttrans(iconUrl: 'assets/ic_transaction_cat2.png', title: 'Cashback', time: 'Sep 11', value: '+22.000'),
+                HomeLatesttrans(iconUrl: 'assets/ic_transaction_cat3.png', title: 'Withdraw', time: 'Sep 1', value: '-450.000'),
+                HomeLatesttrans(iconUrl: 'assets/ic_transaction_cat4.png', title: 'Transfer', time: 'Aug 17', value: '-945.000'),
+                HomeLatesttrans(iconUrl: 'assets/ic_transaction_cat5.png', title: 'Electric', time: 'Aug 1', value: '-345.000'),
+              ],
+            ),
+          )
+
+        ],
+      ),
+    );
   }
 
 }

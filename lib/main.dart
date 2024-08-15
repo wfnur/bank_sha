@@ -1,5 +1,8 @@
+import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/pages/home_page.dart';
 import 'package:bank_sha/ui/pages/onboarding_page.dart';
+import 'package:bank_sha/ui/pages/pin_page.dart';
+import 'package:bank_sha/ui/pages/profile_page.dart';
 import 'package:bank_sha/ui/pages/signin_page.dart';
 import 'package:bank_sha/ui/pages/signup_page.dart';
 import 'package:bank_sha/ui/pages/signup_set_ktp_page.dart';
@@ -19,9 +22,19 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: lightBackgroundColor,
+        appBarTheme: AppBarTheme(
+          backgroundColor: lightBackgroundColor,
+          elevation: 0,
+          centerTitle: true,
+          iconTheme: IconThemeData(color: blackColor),
+          titleTextStyle: blackTextStyle.copyWith(fontSize: 20,fontWeight: semiBold)
+        )
+      ),
       //home: SignupSuccessPage(),
       routes: {
-        '/': (context)=> const HomePage(), //const SplashPage(),
+        '/': (context)=> const PinPage(), //const SplashPage(),
         '/onboarding': (context) => const OnboardingPage(),
         '/sign-in':(context)=> const SigninPage(),
         '/sign-up':(context)=> const SignupPage(),
@@ -29,6 +42,8 @@ class MyApp extends StatelessWidget {
        '/sign-up-ktp-profile':(context)=> const SignupSetKTPPage(),
        '/sign-up-success':(context)=> const SignupSuccessPage(),
        '/home':(context)=> const HomePage(),
+       '/profile':(context)=> const ProfilePage(),
+       '/pin':(context)=> const PinPage(),
       },
     );
   }

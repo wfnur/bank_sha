@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
           buildProfile(context),
           buildWalletCard(),
           buildLevel(),
-          buildService(),
+          buildService(context),
           buildLatestTransaction(),
           buildSendAgain(),
           buildFriendlyTips()
@@ -174,7 +174,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buildService(){
+  Widget buildService(BuildContext context){
     return Container(
       margin: const EdgeInsets.only(top:40),
       child: Column(
@@ -185,7 +185,13 @@ class HomePage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              HomeServiceItem(iconUrl: 'assets/ic_topup.png', title: 'Top Up',onTap: () {},),
+              HomeServiceItem(
+                iconUrl: 'assets/ic_topup.png', 
+                title: 'Top Up',
+                onTap: () {
+                  Navigator.pushNamed(context, '/topup');
+                },
+              ),
               HomeServiceItem(iconUrl: 'assets/ic_send.png', title: 'Send',onTap: () {},),
               HomeServiceItem(iconUrl: 'assets/ic_withdraw.png', title: 'Withdraw',onTap: () {},),
               HomeServiceItem(iconUrl: 'assets/ic_more.png', title: 'More',onTap: () {},),

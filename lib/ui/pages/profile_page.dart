@@ -50,8 +50,18 @@ class ProfilePage extends StatelessWidget {
                 const SizedBox(height: 16,),
                 Text('Syahna Hanna', style: blackTextStyle.copyWith(fontSize: 18,fontWeight: medium),),
                 const SizedBox(height: 40,),
-                ProfileMenuItem(iconUrl: 'assets/ic_edit_profile.png', title: 'Edit Profile',onTap: (){},),
-                ProfileMenuItem(iconUrl: 'assets/ic_pin.png', title: 'My Pin',onTap: (){Navigator.pushNamed(context, '/pin');},),
+                ProfileMenuItem(iconUrl: 'assets/ic_edit_profile.png', title: 'Edit Profile',onTap: () async{
+                  if(await Navigator.pushNamed(context, '/pin') == true){
+                    if (!context.mounted) return;
+                      Navigator.pushNamed(context, '/profile-edit');
+                  }
+                },),
+                ProfileMenuItem(iconUrl: 'assets/ic_pin.png', title: 'My Pin',onTap: () async{
+                  if(await Navigator.pushNamed(context, '/pin') == true){
+                    if (!context.mounted) return;
+                      Navigator.pushNamed(context, '/profile-edit-pin');
+                  }
+                },),
                 ProfileMenuItem(iconUrl: 'assets/ic_wallet.png', title: 'Wallet Settings',onTap: (){},),
                 ProfileMenuItem(iconUrl: 'assets/ic_reward.png', title: 'My Rewards',onTap: (){},),
                 ProfileMenuItem(iconUrl: 'assets/ic_help.png', title: 'Help Center',onTap: (){},),

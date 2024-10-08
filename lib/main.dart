@@ -2,6 +2,9 @@ import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/pages/home_page.dart';
 import 'package:bank_sha/ui/pages/onboarding_page.dart';
 import 'package:bank_sha/ui/pages/pin_page.dart';
+import 'package:bank_sha/ui/pages/profile_edit_page.dart';
+import 'package:bank_sha/ui/pages/profile_edit_pin_page.dart';
+import 'package:bank_sha/ui/pages/profile_edit_success_page.dart';
 import 'package:bank_sha/ui/pages/profile_page.dart';
 import 'package:bank_sha/ui/pages/signin_page.dart';
 import 'package:bank_sha/ui/pages/signup_page.dart';
@@ -34,7 +37,7 @@ class MyApp extends StatelessWidget {
       ),
       //home: SignupSuccessPage(),
       routes: {
-        '/': (context)=> const PinPage(), //const SplashPage(),
+        '/': (context)=> const ProfilePage(), //const SplashPage(),
         '/onboarding': (context) => const OnboardingPage(),
         '/sign-in':(context)=> const SigninPage(),
         '/sign-up':(context)=> const SignupPage(),
@@ -44,6 +47,10 @@ class MyApp extends StatelessWidget {
        '/home':(context)=> const HomePage(),
        '/profile':(context)=> const ProfilePage(),
        '/pin':(context)=> const PinPage(),
+       '/profile-edit':(context)=> const ProfileEditPage(),
+       '/profile-edit-pin':(context)=> const ProfileEditPinPage(),
+       '/profile-edit-success':(context)=> const ProfileEditSuccesspage(),
+       
       },
     );
   }

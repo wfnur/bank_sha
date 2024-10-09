@@ -238,13 +238,36 @@ class HomePage extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               color: whiteColor
             ),
-            child: const Column(
+            child: Column(
               children: [
-                HomeLatesttrans(iconUrl: 'assets/ic_transaction_cat1.png', title: 'Topup', time: 'Yesterday', value: '+45.000'),
-                HomeLatesttrans(iconUrl: 'assets/ic_transaction_cat2.png', title: 'Cashback', time: 'Sep 11', value: '+22.000'),
-                HomeLatesttrans(iconUrl: 'assets/ic_transaction_cat3.png', title: 'Withdraw', time: 'Sep 1', value: '-450.000'),
-                HomeLatesttrans(iconUrl: 'assets/ic_transaction_cat4.png', title: 'Transfer', time: 'Aug 17', value: '-945.000'),
-                HomeLatesttrans(iconUrl: 'assets/ic_transaction_cat5.png', title: 'Electric', time: 'Aug 1', value: '-345.000'),
+                HomeLatesttrans(
+                  iconUrl: 'assets/ic_transaction_cat1.png', 
+                  title: 'Topup', 
+                  time: 'Yesterday', 
+                  value: '+ ${formatCurrency(45000)}'
+                ),
+                HomeLatesttrans(
+                  iconUrl: 'assets/ic_transaction_cat2.png', 
+                  title: 'Cashback', 
+                  time: 'Sep 11', 
+                  value: '+ ${formatCurrency(22000)}'),
+                HomeLatesttrans(
+                  iconUrl: 'assets/ic_transaction_cat3.png', 
+                  title: 'Withdraw', time: 'Sep 1', 
+                  value: '- ${formatCurrency(10000)}'
+                ),
+                HomeLatesttrans(
+                  iconUrl: 'assets/ic_transaction_cat4.png', 
+                  title: 'Transfer', 
+                  time: 'Aug 17', 
+                  value: '- ${formatCurrency(70000)}'
+                ),
+                HomeLatesttrans(
+                  iconUrl: 'assets/ic_transaction_cat5.png', 
+                  title: 'Electric', 
+                  time: 'Aug 1', 
+                  value: '- ${formatCurrency(50000)}'
+                ),
               ],
             ),
           )

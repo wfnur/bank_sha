@@ -1,3 +1,4 @@
+import 'package:bank_sha/shared/shared_method.dart';
 import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/pages/widgets/home_latesttrans.dart';
 import 'package:bank_sha/ui/pages/widgets/home_service_item.dart';
@@ -137,7 +138,13 @@ class HomePage extends StatelessWidget {
           Text('**** **** **** 8990 ',style: whiteTextStyle.copyWith(fontSize: 18,fontWeight: medium,letterSpacing: 6),),
           const SizedBox(height: 21,),
           Text('Balance',style: whiteTextStyle),
-          Text('Rp. 1.000.000',style: whiteTextStyle.copyWith(fontSize: 24,fontWeight: semiBold)),
+          Text(
+            formatCurrency(1000000),
+            style: whiteTextStyle.copyWith(
+              fontSize: 24,
+              fontWeight: semiBold
+            )
+          ),
         ],
       ),
     );
@@ -158,7 +165,7 @@ class HomePage extends StatelessWidget {
               Text('Level : Beginer',style: blackTextStyle.copyWith(fontWeight: semiBold),),
               const Spacer(),
               Text('55%',style: greenTextStyle.copyWith(fontWeight: semiBold),),
-              Text(' of Rp. 20.000',style: blackTextStyle),
+              Text(' of ${formatCurrency(10000000)}',style: blackTextStyle),
             ],
           ),
           const SizedBox(height: 10,),

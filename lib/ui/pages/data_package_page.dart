@@ -53,17 +53,18 @@ class DataPackagePage extends StatelessWidget {
             runSpacing: 17,
             children: [
               PackageItem(
-                name: '10 GB', 
-                price: 'RP. 10.000',
+                amount: 10, 
+                price: 10000,
                 isSelected: true,
               ),
               PackageItem(
-                name: '50 GB', 
-                price: 'RP. 50.000'
+                amount: 50, 
+                price: 50000,
               ),
               PackageItem(
-                name: '100 GB', 
-                price: 'RP. 100.000'
+                amount: 100, 
+                price: 1000000,
+                isSelected: true,
               )
             ]
           ),

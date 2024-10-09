@@ -1,19 +1,20 @@
+import 'package:bank_sha/shared/shared_method.dart';
 import 'package:bank_sha/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class PackageItem extends StatelessWidget {
   //final DataPlanModel dataPlan;
   final bool isSelected;
-  final String name;
-  final String price;
+  final int amount;
+  final num price;
 
   const PackageItem({
-    Key? key,
+    super.key,
     //required this.dataPlan,
     this.isSelected = false, 
-    required this.name, 
+    required this.amount, 
     required this.price,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class PackageItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            name,
+            '${amount} GB',
             style: blackTextStyle.copyWith(
               fontSize: 32,
               fontWeight: semiBold,
@@ -46,7 +47,7 @@ class PackageItem extends StatelessWidget {
             height: 2,
           ),
           Text(
-            price,
+            formatCurrency(price),
             style: greyTextStyle.copyWith(
               fontSize: 12,
             ),

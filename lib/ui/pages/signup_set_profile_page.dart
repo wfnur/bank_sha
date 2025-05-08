@@ -1,13 +1,46 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+
+import 'package:bank_sha/models/sign_up_form_model.dart';
+import 'package:bank_sha/shared/shared_method.dart';
 import 'package:bank_sha/shared/theme.dart';
+import 'package:bank_sha/ui/pages/signup_set_ktp_page.dart';
 import 'package:bank_sha/ui/pages/widgets/buttons.dart';
 import 'package:bank_sha/ui/pages/widgets/forms.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class SignupSetProfilePage extends StatelessWidget {
-  const SignupSetProfilePage({super.key});
+class SignupSetProfilePage extends StatefulWidget {
+  final SignUpFormModel data;
+
+  SignupSetProfilePage({
+    super.key, 
+    required this.data
+  });
 
   @override
+  State<SignupSetProfilePage> createState() => _SignupSetProfilePageState();
+}
+
+class _SignupSetProfilePageState extends State<SignupSetProfilePage> {
+  
+  final pinController = TextEditingController(text: '');
+  XFile? selectedImage;
+  //For Web
+  Uint8List? imageBytes;
+
+  bool validate(){
+    if(pinController.text.length != 6){
+      return false;
+    }
+    return true;
+  }
+  
+  @override
   Widget build(BuildContext context) {
+    print(widget.data.toJson());
+    
     return Scaffold(
       backgroundColor: lightBackgroundColor,
       body: ListView(
@@ -40,43 +73,78 @@ class SignupSetProfilePage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                // Container(
-                //   width: 120,
-                //   height: 120,
-                //   decoration: BoxDecoration(
-                //     shape: BoxShape.circle,
-                //     color: lightBackgroundColor
-                //   ),
-                //   child: Center(
-                //     child: Image.asset('assets/ic_upload.png',width: 32,),
-                //   ),
-                // ),
-                Container(
-                  width: 120,
-                  height: 120,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/img_profile.png')
-                    )
+                GestureDetector(
+                  onTap: () async {
+                    // final image = await selectImage();
+                    // setState(() {
+                    //   selectedImage = image;
+                    // });
+
+                    final image = await selectImage();
+                    if (image != null) {
+                      final bytes = await image.readAsBytes(); // Read the bytes asynchronously
+                      setState(() {
+                        selectedImage = image;
+                        imageBytes = bytes; // Store the bytes in a variable
+                      });
+                    }
+                  },
+                  child: Container(
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: lightBackgroundColor,
+                      image: selectedImage == null 
+                          ? null 
+                          : DecorationImage(
+                            fit: BoxFit.cover,
+                            //image:FileImage(File(selectedImage!.path))
+                            image: MemoryImage(imageBytes!),
+                          ),
+                    ),
+                    child: selectedImage != null ? null :
+                     Center(
+                      child: Image.asset('assets/ic_upload.png',width: 32,),
+                    ),
                   ),
                 ),
+                
                 const SizedBox(height: 16,),
 
                 Text('Jhon Wijk',style: blackTextStyle.copyWith(fontWeight: medium,fontSize: 18),),
                 const SizedBox(height: 30,),
 
-                const CustomFormField(
+                CustomFormField(
                   title: 'Set Pin (6 digit Number)',
                   obscureText: true,
+                  controller: pinController,
+                  keyboardType: TextInputType.number,
                 ),
                 const SizedBox(height: 30,),
 
                 CustomFilledButton(
                   title: 'Continue',
                   onPressed: () {
-                    Navigator.pushNamed(context, '/sign-up-ktp-profile');
+                    if(validate())
+                    {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => 
+                        SignupSetKTPPage(
+                          data: widget.data.copyWith(
+                          pin:pinController.text,
+                          profilePicture:selectedImage == null ? null : 'data:image/png;base64${base64Encode(File(selectedImage!.path).readAsBytesSync())}'
+                          ),
+                        ),
+                      ),
+                      );
+                    }
+                    else{
+                      showCustomSnackbar(context, "Pin Harus 6 Digit");
+                    }
+
+
+                    
                   },
                 )
                       

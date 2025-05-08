@@ -3,7 +3,7 @@ import 'package:bank_sha/ui/pages/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 
 class DataSuccessPage extends StatelessWidget {
-  const DataSuccessPage({Key? key}) : super(key: key);
+  const DataSuccessPage({super.key});
 
   @override
   Widget build(BuildContext context) {

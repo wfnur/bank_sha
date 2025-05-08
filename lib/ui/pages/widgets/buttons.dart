@@ -36,7 +36,7 @@ class CustomFilledButton extends StatelessWidget {
             ),
         ),
       ),
-    );;
+    );
   }
 }
 

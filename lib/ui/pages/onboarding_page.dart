@@ -14,7 +14,7 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
 
   int currentIndex = 0;
-  CarouselController carouselController = CarouselController();
+  CarouselSliderController carouselController = CarouselSliderController();
   List<String> titles = [
     'Grow Your\nFinancial Today',
     'Build From\nZero to Freedom',

@@ -10,13 +10,13 @@ class DataProviderItem extends StatelessWidget {
 
 
   const DataProviderItem({
-    Key? key,
+    super.key,
     //required this.operator,
     this.isSelected = false, 
     required this.imageUrl, 
     required this.name, 
     required this.status,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -14,7 +14,6 @@ import 'package:bank_sha/ui/pages/signup_page.dart';
 import 'package:bank_sha/ui/pages/signup_set_ktp_page.dart';
 import 'package:bank_sha/ui/pages/signup_set_profile_page.dart';
 import 'package:bank_sha/ui/pages/signup_success_page.dart';
-import 'package:bank_sha/ui/pages/splash_page.dart';
 import 'package:bank_sha/ui/pages/topup_amount_page.dart';
 import 'package:bank_sha/ui/pages/topup_page.dart';
 import 'package:bank_sha/ui/pages/topup_success.dart';

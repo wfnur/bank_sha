@@ -31,7 +31,7 @@ class DataPackagePage extends StatelessWidget {
           const SizedBox(
             height: 14,
           ),
-          CustomFormField(
+          const CustomFormField(
             title: '+628',
             isShowTitle: false,
           ),

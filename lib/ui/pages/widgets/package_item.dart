@@ -37,7 +37,7 @@ class PackageItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '${amount} GB',
+            '$amount GB',
             style: blackTextStyle.copyWith(
               fontSize: 32,
               fontWeight: semiBold,

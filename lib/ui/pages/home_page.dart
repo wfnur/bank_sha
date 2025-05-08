@@ -329,7 +329,7 @@ class HomePage extends StatelessWidget {
 
 
 class MoreDialog extends StatelessWidget {
-  const MoreDialog({Key? key}) : super(key: key);
+  const MoreDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

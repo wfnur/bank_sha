@@ -1,3 +1,6 @@
+# Run the following command in your terminal to install the required libraries:
+# flutter pub get
+
 name: bank_sha
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
@@ -31,7 +34,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^6.2.1
-  carousel_slider: ^4.2.1
+  carousel_slider: ^5.0.0
   url_launcher: ^6.3.0
   intl: ^0.17.0
   another_flushbar: ^1.10.28

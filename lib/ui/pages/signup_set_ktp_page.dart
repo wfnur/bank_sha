@@ -1,6 +1,5 @@
 import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/pages/widgets/buttons.dart';
-import 'package:bank_sha/ui/pages/widgets/forms.dart';
 import 'package:flutter/material.dart';
 
 class SignupSetKTPPage extends StatelessWidget {

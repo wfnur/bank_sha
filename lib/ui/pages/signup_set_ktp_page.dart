@@ -1,9 +1,13 @@
+import 'dart:typed_data';
+
 import 'package:bank_sha/models/sign_up_form_model.dart';
+import 'package:bank_sha/shared/shared_method.dart';
 import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/pages/widgets/buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class SignupSetKTPPage extends StatelessWidget {
+class SignupSetKTPPage extends StatefulWidget {
 
   final SignUpFormModel data;
   
@@ -12,6 +16,22 @@ class SignupSetKTPPage extends StatelessWidget {
     super.key, 
     required this.data
   });
+
+  @override
+  State<SignupSetKTPPage> createState() => _SignupSetKTPPageState();
+}
+
+class _SignupSetKTPPageState extends State<SignupSetKTPPage> {
+  XFile? selectedImage;
+  //For Web
+  Uint8List? imageBytes;
+
+  bool validate(){
+    if(selectedImage ==null){
+      return false;
+    }
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,28 +67,43 @@ class SignupSetKTPPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Container(
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: lightBackgroundColor
-                  ),
-                  child: Center(
-                    child: Image.asset('assets/ic_upload.png',width: 32,),
+               GestureDetector(
+                  onTap: () async {
+                    // final image = await selectImage();
+                    // setState(() {
+                    //   selectedImage = image;
+                    // });
+
+                    final image = await selectImage();
+                    if (image != null) {
+                      final bytes = await image.readAsBytes(); // Read the bytes asynchronously
+                      setState(() {
+                        selectedImage = image;
+                        imageBytes = bytes; // Store the bytes in a variable
+                      });
+                    }
+                  },
+                  child: Container(
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: lightBackgroundColor,
+                      image: selectedImage == null 
+                          ? null 
+                          : DecorationImage(
+                            fit: BoxFit.cover,
+                            //image:FileImage(File(selectedImage!.path))
+                            image: MemoryImage(imageBytes!),
+                          ),
+                    ),
+                    child: selectedImage != null ? null :
+                     Center(
+                      child: Image.asset('assets/ic_upload.png',width: 32,),
+                    ),
                   ),
                 ),
-                // Container(
-                //   width: 120,
-                //   height: 120,
-                //   decoration: const BoxDecoration(
-                //     shape: BoxShape.circle,
-                //     image: DecorationImage(
-                //       fit: BoxFit.cover,
-                //       image: AssetImage('assets/img_profile.png')
-                //     )
-                //   ),
-                // ),
+                
                 const SizedBox(height: 16,),
 
                 Text('ID Card/Passport',style: blackTextStyle.copyWith(fontWeight: medium,fontSize: 18),),
@@ -76,7 +111,13 @@ class SignupSetKTPPage extends StatelessWidget {
 
                 CustomFilledButton(
                   title: 'Continue',
-                  onPressed: () {},
+                  onPressed: () {
+                    if(validate()){
+
+                    }else{
+                      showCustomSnackbar(context, "KTP Tidak Boleh Kosong");
+                    }
+                  },
                 ),
                 
               ],

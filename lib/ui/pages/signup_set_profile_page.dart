@@ -125,15 +125,18 @@ class _SignupSetProfilePageState extends State<SignupSetProfilePage> {
 
                 CustomFilledButton(
                   title: 'Continue',
-                  onPressed: () {
+                  onPressed: () async {
                     if(validate())
                     {
+                      String? base64Image;
+                      final bytes = await selectedImage!.readAsBytes();
+                      base64Image = base64Encode(bytes);
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) => 
                         SignupSetKTPPage(
                           data: widget.data.copyWith(
                           pin:pinController.text,
-                          profilePicture:selectedImage == null ? null : 'data:image/png;base64${base64Encode(File(selectedImage!.path).readAsBytesSync())}'
+                          profilePicture:selectedImage == null ? null : 'data:image/png;base64${base64Image})}'
                           ),
                         ),
                       ),

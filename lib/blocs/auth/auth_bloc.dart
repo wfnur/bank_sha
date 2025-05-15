@@ -1,4 +1,5 @@
 import 'package:bank_sha/models/sign_up_form_model.dart';
+import 'package:bank_sha/models/signin_form_model.dart';
 import 'package:bank_sha/models/user_model.dart';
 import 'package:bank_sha/services/auth_service.dart';
 // ignore: depend_on_referenced_packages
@@ -32,6 +33,30 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           final user = await AuthService().register(event.data);
           emit(AuthSuccess(user));
 
+        } catch (e) {
+          emit(AuthFailed(e.toString()));
+        }
+      }
+
+
+      if(event is AuthLogin){
+        try {
+          emit(AuthLoading());
+          final user = await AuthService().login(event.data);
+          emit(AuthSuccess(user));
+
+        } catch (e) {
+          emit(AuthFailed(e.toString()));
+        }
+      }
+
+      if(event is AuthGetCurrentUser){
+        try {
+          emit(AuthLoading());
+          final SignInFormModel data = await AuthService().getCredentialFromLocal();
+          final UserModel user = await AuthService().login(data);
+
+          emit(AuthSuccess(user));
         } catch (e) {
           emit(AuthFailed(e.toString()));
         }

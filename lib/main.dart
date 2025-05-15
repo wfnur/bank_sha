@@ -13,6 +13,7 @@ import 'package:bank_sha/ui/pages/profile_page.dart';
 import 'package:bank_sha/ui/pages/signin_page.dart';
 import 'package:bank_sha/ui/pages/signup_page.dart';
 import 'package:bank_sha/ui/pages/signup_success_page.dart';
+import 'package:bank_sha/ui/pages/splash_page.dart';
 import 'package:bank_sha/ui/pages/topup_amount_page.dart';
 import 'package:bank_sha/ui/pages/topup_page.dart';
 import 'package:bank_sha/ui/pages/topup_success.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AuthBloc(),
+          create: (context) => AuthBloc()..add(AuthGetCurrentUser()),
         ),
       ],
       child: MaterialApp(
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
         ),
         //home: SignupSuccessPage(),
         routes: {
-          '/': (context)=> const SigninPage(), //const SplashPage(),
+          '/': (context)=> const SplashPage(), //const SplashPage(),
           '/onboarding': (context) => const OnboardingPage(),
           '/sign-in':(context)=> const SigninPage(),
           '/sign-up':(context)=> const SignupPage(),

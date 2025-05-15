@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:bank_sha/models/sign_up_form_model.dart';
@@ -14,7 +13,7 @@ import 'package:image_picker/image_picker.dart';
 class SignupSetProfilePage extends StatefulWidget {
   final SignUpFormModel data;
 
-  SignupSetProfilePage({
+  const SignupSetProfilePage({
     super.key, 
     required this.data
   });
@@ -82,6 +81,7 @@ class _SignupSetProfilePageState extends State<SignupSetProfilePage> {
 
                     final image = await selectImage();
                     if (image != null) {
+                      
                       final bytes = await image.readAsBytes(); // Read the bytes asynchronously
                       setState(() {
                         selectedImage = image;
@@ -128,15 +128,19 @@ class _SignupSetProfilePageState extends State<SignupSetProfilePage> {
                   onPressed: () async {
                     if(validate())
                     {
+                      
                       String? base64Image;
                       final bytes = await selectedImage!.readAsBytes();
                       base64Image = base64Encode(bytes);
+
+
+                      // ignore: use_build_context_synchronously
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) => 
                         SignupSetKTPPage(
                           data: widget.data.copyWith(
                           pin:pinController.text,
-                          profilePicture:selectedImage == null ? null : 'data:image/png;base64${base64Image})}'
+                          profilePicture:selectedImage == null ? null : 'data:image/png;base64,$base64Image'
                           ),
                         ),
                       ),

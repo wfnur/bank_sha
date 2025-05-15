@@ -116,8 +116,6 @@ class _SignupPageState extends State<SignupPage> {
                       title: 'Continue',
                       onPressed: () {
                         if (validate()) {
-                          //TODO : check email if already exist
-
                           context.read<AuthBloc>().add(AuthCheckEmail(emailController.text));
                         } else {
                           showCustomSnackbar(

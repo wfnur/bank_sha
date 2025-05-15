@@ -1,5 +1,5 @@
 import 'package:bank_sha/shared/theme.dart';
-import 'package:bank_sha/ui/pages/signin_page.dart';
+//import 'package:bank_sha/ui/pages/signin_page.dart';
 import 'package:bank_sha/ui/pages/widgets/buttons.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';

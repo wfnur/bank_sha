@@ -37,8 +37,7 @@ class DataSuccessPage extends StatelessWidget {
               width: 183,
               title: 'Back to Home',
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/home', (route) => false);
+                Navigator.pushNamedAndRemoveUntil(context, '/home',(route)=> false);
               },
             ),
           ],

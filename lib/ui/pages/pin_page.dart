@@ -1,7 +1,9 @@
+import 'package:bank_sha/blocs/auth/auth_bloc.dart';
 import 'package:bank_sha/shared/shared_method.dart';
 import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/pages/widgets/buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PinPage extends StatefulWidget {
   const PinPage({super.key});
@@ -12,6 +14,8 @@ class PinPage extends StatefulWidget {
 
 class _PinPageState extends State<PinPage> {
   final TextEditingController pinController = TextEditingController(text: '');
+  String pin='';
+  bool isError = false;
 
   addPin(String number){
     if(pinController.text.length < 6){
@@ -21,9 +25,12 @@ class _PinPageState extends State<PinPage> {
     }
 
     if(pinController.text.length == 6){
-      if(pinController.text == '112233'){
+      if(pinController.text == pin){
         Navigator.pop(context,true);
       }else{
+        setState(() {
+          isError=true;
+        });
         showCustomSnackbar(context, 'PIN yang anda masukan salah');
       }
     }
@@ -32,8 +39,19 @@ class _PinPageState extends State<PinPage> {
   deletePin(){
     if(pinController.text.isNotEmpty){
       setState(() {
+        isError=false;
         pinController.text = pinController.text.substring(0,pinController.text.length-1);
       });
+    }
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    final AuthState = context.read<AuthBloc>().state; // get state
+    if(AuthState is AuthSuccess){
+      pin = AuthState.user.pin!;
+      print(pin);
     }
   }
 
@@ -57,7 +75,12 @@ class _PinPageState extends State<PinPage> {
                   cursorColor: greyColor,
                   obscuringCharacter: '*',
                   enabled: false,
-                  style: whiteTextStyle.copyWith(fontSize: 26,fontWeight: medium,letterSpacing: 19),
+                  style: whiteTextStyle.copyWith(
+                    fontSize: 26,
+                    fontWeight: medium,
+                    letterSpacing: 19,
+                    color: isError ? redColor :whiteColor
+                  ),
                   decoration: InputDecoration(
                     disabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(

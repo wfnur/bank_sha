@@ -59,7 +59,24 @@ class AuthService {
 
   // Example method for user logout
   Future<void> logout() async {
-    // Implement your logout logic here
+    try {
+      final token = await getToken();
+      final res = await http.post(
+        Uri.parse('$baseUrl/logout'),
+        headers: {
+          'Authorization' : token
+        }
+      );
+
+      if(res.statusCode != 200){
+        throw jsonDecode(res.body)['message'];
+      }
+
+      await clearLocalStorage();
+      
+    } catch (e) {
+      rethrow;
+    }
   }
 
   Future<UserModel> register(SignUpFormModel data)async{
@@ -142,6 +159,7 @@ class AuthService {
     await storage.deleteAll();
 
   }
+
 
   
 
